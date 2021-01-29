@@ -25,8 +25,8 @@ func (s *Server) Serve() error {
 	r.Route("/v1", func(r chi.Router) {
 		r.Use(middleware.Logger)
 		r.Get("/quotes", s.getQuotes)
-		r.Post("/categories", s.getCategories)
-		r.Get("/categories", s.postCategories)
+		r.Get("/categories", s.getCategories)
+		r.Post("/categories", s.postCategories)
 		// r.Get("/mlr/over-amount-paid-pi/{interval}/{amount}/{times}", s.ReportOverAmount)
 	})
 
