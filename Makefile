@@ -1,5 +1,6 @@
 IMAGE_NAME=quotes-server
 VERSION=0.0.1
+REGISTRY=jekabolt
 
 build:
 	go build -o ./bin/$(IMAGE_NAME) ./cmd/
@@ -15,3 +16,4 @@ dist:
 	
 scp: dist
 	source .env && scp ./bin/$(IMAGE_NAME) ${REMOTE_SSH}:
+	

@@ -7,14 +7,14 @@ RUN apk add --no-cache git libgit2-dev alpine-sdk
 WORKDIR /go/src/github.com/jekabolt/quotes
 
 # https://divan.github.io/posts/go_get_private/
-COPY .gitconfig /root/.gitconfig
+# COPY .gitconfig /root/.gitconfig
 COPY go.mod .
 COPY go.sum .
 # install dependencies
 RUN go mod download
 
 COPY ./cmd/ ./cmd/
-COPY ./logs/ ./logs/
+COPY ./signature/ ./signature/
 COPY ./server/ ./server/
 
 RUN go build -o ./bin/quotes-server ./cmd/

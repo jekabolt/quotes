@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/rs/zerolog/log"
@@ -27,6 +28,8 @@ func (s *Server) getQuotes(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getCategories(w http.ResponseWriter, r *http.Request) {
+	err := s.TokenValid(r)
+	fmt.Println("---- err", err)
 	json.NewEncoder(w).Encode(Categories{
 		List: []string{
 			"фильмы",
@@ -40,6 +43,8 @@ func (s *Server) getCategories(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) postCategories(w http.ResponseWriter, r *http.Request) {
+
+	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("OK"))
 }
 

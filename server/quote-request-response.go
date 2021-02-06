@@ -21,3 +21,8 @@ type Quote struct {
 type Categories struct {
 	List []string `json:"list"`
 }
+
+type RespError struct {
+	Error string `json:"error"`
+	Code  string `json:"code"`
+}
